@@ -1,0 +1,14 @@
+// the configured options and settings for Tutorial
+
+namespace is
+{
+    namespace wrappers
+    {
+        namespace version
+        {
+            auto constexpr const major = @wrappers_VERSION_MAJOR@;
+            auto constexpr const minor = @wrappers_VERSION_MINOR@;
+            auto constexpr const patch = @wrappers_VERSION_PATCH@;
+        }
+    }
+}
