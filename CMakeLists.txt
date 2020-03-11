@@ -5,11 +5,10 @@ project(wrappers VERSION 0.0.1)
 configure_file(wrappers_config.in wrappers_config.hxx)
 
 # Add the executable
-add_executable(wrappers
-        tests/wrapper_tests.cxx)
+add_executable(wrappers tests/wrappers_tests.cxx)
 
 # Specify the C++ standard
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add directories to search path for include files
