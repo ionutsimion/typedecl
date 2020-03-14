@@ -22,7 +22,7 @@ namespace is
         explicit constexpr wrapper_t(value_type value) : _{ std::move(value) } {}
 
     protected:
-        friend auto constexpr get<>(wrapper_t<WrappedType, UniqueTag> const &wrapper) noexcept -> WrappedType;
+        friend auto constexpr get<>(wrapper_t<WrappedType, UniqueTag> const &) noexcept -> WrappedType;
 
         value_type _{};
     };

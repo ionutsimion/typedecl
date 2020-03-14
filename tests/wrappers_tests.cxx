@@ -1,6 +1,7 @@
-#include <typedecl.hxx>
-#include <tag.hxx>
 #include <wrappers_config.hxx>
+#include <tag.hxx>
+#include <typedecl.hxx>
+#include <property.hxx>
 
 #include <algorithm>
 #include <iostream>
@@ -71,6 +72,16 @@ auto typedecl_tests()
 
 auto property_tests()
 {
+    auto constexpr const n1 = is::property_t<int64_t, AUTO_TAG>{};
+    auto constexpr const n2 = is::property_t<int64_t, AUTO_TAG>{ 1 };
+    std::cout
+            << "constexpr default initialized integer: " << get(n1) << std::endl
+            << "constexpr value initialized integer:   " << get(n2) << std::endl;
+    auto constexpr const n3 = get(n1);
+    auto n4 = n1;
+    std::cout
+            << "default initialized integer: " << n3 << std::endl
+            << "value initialized integer:   " << get(n4) << std::endl;
 }
 
 int main(int const number_of_arguments, char *arguments[])
