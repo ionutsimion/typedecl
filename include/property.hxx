@@ -18,8 +18,18 @@ namespace is
         constexpr property_t() = default;
         explicit constexpr property_t(value_type value) : wrapper_t<WrappedType, UniqueTag>{ std::move(value) } {}
 
+        auto constexpr get() const noexcept
+        {
+            return is::get(*this);
+        }
+
+        auto set(value_type value) noexcept -> void
+        {
+            is::set(*this, value);
+        }
+
     protected:
-        friend auto constexpr set<>(property_t<WrappedType, UniqueTag> &, WrappedType) noexcept;
+        friend auto constexpr is::set<>(property_t<WrappedType, UniqueTag> &, WrappedType) noexcept;
     };
 
     template<typename WrappedType, typename UniqueTag>

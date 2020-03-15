@@ -24,8 +24,8 @@ auto typedecl_tests()
     auto n6 = n3;
     std::cout
             << "default initialized integer: " << n4 << std::endl
-            << "value initialized integer:   " << n5 << std::endl
-            << "integer:                     " << n6 << std::endl;
+            << "integer:                     " << n5 << std::endl
+            << "constant integer:            " << n6 << std::endl;
     // is::typedecl_t<int64_t, AUTO_TAG> x = 1; -> cannot automatically convert from built-in types
 
     // auto const ca = is::typedecl_t<char *, AUTO_TAG>{}; -> does not allow raw pointers
@@ -81,7 +81,15 @@ auto property_tests()
     auto n4 = n1;
     std::cout
             << "default initialized integer: " << n3 << std::endl
-            << "value initialized integer:   " << get(n4) << std::endl;
+            << "integer:                     " << get(n4) << std::endl;
+
+    // n4 = 3; -> Cannot directly initialize with value
+    n4 = decltype(n4){ 2 };
+    std::cout << "changed integer (copy ctor): " << get(n4) << std::endl;
+    set(n4, 3l);
+    std::cout << "integer changed by is::set:  " << get(n4) << std::endl;
+    n4.set(4);
+    std::cout << "integer changed by .set:     " << n4.get() << std::endl;
 }
 
 int main(int const number_of_arguments, char *arguments[])
